@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#071d42">
+  <meta name="description" content="The official website of Seychelles National Model United Nations, a programme of the Tyler Nicholas Foundation, is coming soon.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Seychelles National Model United Nations — Coming Soon">
+  <meta property="og:description" content="From Seychelles to the world, Diplomacy Begins Here. Our official website is being prepared.">
+  <meta property="og:image" content="assets/snmun-banner.png">
+  <title>Home: Seychelles National Model United Nations</title>
+  <link rel="icon" type="image/png" href="assets/snmun-emblem.png">
+  <link rel="apple-touch-icon" href="assets/snmun-emblem.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --midnight: #051733;
+      --navy: #071d42;
+      --blue: #145cac;
+      --pale: #f4f8ff;
+      --mist: #cedbf0;
+      --fine: rgba(229, 238, 255, .21);
+      --font-body: "DM Sans", "Segoe UI", Arial, sans-serif;
+      --font-display: "Libre Baskerville", Georgia, "Times New Roman", serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      color: var(--pale);
+      background: var(--midnight);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid #9acaff; outline-offset: 5px; border-radius: 3px; }
+    ::selection { background: #b9dafc; color: #051733; }
+
+    .site {
+      position: relative;
+      isolation: isolate;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 62% 46% at 51% 45%, rgba(31, 111, 191, .40), transparent 77%),
+        radial-gradient(ellipse 34% 52% at 1% 17%, rgba(16, 81, 155, .38), transparent 74%),
+        radial-gradient(ellipse 34% 52% at 97% 86%, rgba(13, 72, 139, .37), transparent 75%),
+        linear-gradient(132deg, #061730 3%, #0a2856 48%, #061a3b 100%);
+    }
+    .site::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      opacity: .5;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(177, 215, 255, .027) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(177, 215, 255, .027) 1px, transparent 1px);
+      background-size: 88px 88px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 84%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 84%, transparent);
+    }
+    .site::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      opacity: .53;
+      pointer-events: none;
+      background: linear-gradient(105deg, transparent 32%, rgba(163, 214, 255, .045) 48%, transparent 64%);
+      transform: translateX(-35%);
+      animation: blue-sheen 15s ease-in-out infinite alternate;
+    }
+    .ambient-globe {
+      position: absolute;
+      z-index: -1;
+      top: 50%; left: 50%;
+      width: min(81vw, 920px);
+      aspect-ratio: 1;
+      transform: translate(-50%, -49%);
+      border: 1px solid rgba(193, 220, 255, .075);
+      border-radius: 50%;
+      box-shadow: 0 0 0 84px rgba(209, 230, 255, .015), 0 0 0 168px rgba(209, 230, 255, .009), inset 0 0 145px rgba(27, 119, 215, .06);
+      pointer-events: none;
+    }
+    .ambient-globe::before, .ambient-globe::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(187, 219, 255, .063);
+      border-radius: 50%;
+    }
+    .ambient-globe::before { inset: -1px 24%; }
+    .ambient-globe::after { inset: 32% -1px; }
+    .accent-orbit {
+      position: absolute;
+      inset: auto -20vw -470px -20vw;
+      height: 620px;
+      border: 1px solid rgba(191, 221, 255, .09);
+      border-radius: 50% 50% 0 0;
+      transform: rotate(-4deg);
+      pointer-events: none;
+    }
+
+    .topline {
+      height: 3px;
+      background: linear-gradient(90deg, #0f4186, #b2dafa 50%, #0f4186);
+      opacity: .85;
+    }
+    .site-header, .site-footer { position: relative; z-index: 1; }
+    .header-inner, .footer-inner {
+      width: min(100% - 96px, 1392px);
+      margin-inline: auto;
+    }
+    .header-inner {
+      min-height: 111px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      border-bottom: 1px solid var(--fine);
+    }
+    .identity {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      min-width: 0;
+    }
+    .identity img {
+      height: 59px;
+      width: 59px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+    .identity-name {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.44;
+      letter-spacing: .105em;
+      text-transform: uppercase;
+    }
+    .programme-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      text-decoration: none;
+      padding: 9px 0;
+    }
+    .programme-label {
+      display: block;
+      color: #bfcee4;
+      font-size: 9px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      text-align: right;
+      margin-bottom: 5px;
+    }
+    .programme-name {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .03em;
+      text-align: right;
+    }
+    .programme-mark {
+      height: 46px;
+      width: 58px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: .9;
+    }
+    .programme-link:hover .programme-name,
+    .contact-link:hover,
+    .site-footer a:hover { color: #bedfff; }
+
+    .site-main {
+      width: min(100% - 40px, 1100px);
+      margin: auto;
+      flex: 1;
+      display: grid;
+      place-items: center;
+      position: relative;
+      z-index: 1;
+      padding: 68px 0 83px;
+    }
+    .hero { text-align: center; width: 100%; }
+    .hero-emblem {
+      width: min(83vw, 470px);
+      height: auto;
+      display: block;
+      margin: 0 auto 43px;
+      filter: brightness(0) invert(1);
+      opacity: .96;
+      animation: reveal-up 1.2s both;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 0 0 24px;
+      color: #bcd8f7;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: .33em;
+      text-transform: uppercase;
+      animation: reveal-up .85s .12s both;
+    }
+    .eyebrow::before, .eyebrow::after { content: ""; width: 33px; height: 1px; background: rgba(205, 230, 255, .5); }
+    h1 {
+      margin: 0;
+      font: 400 clamp(56px, 8vw, 110px) / 1.25 var(--font-display);
+      letter-spacing: -.052em;
+      text-wrap: balance;
+      text-shadow: 0 8px 55px rgba(0, 15, 37, .26);
+      animation: reveal-up 1s .22s both;
+    }
+    .fine-rule {
+      width: 94px;
+      height: 1px;
+      margin: 29px auto 26px;
+      background: linear-gradient(90deg, transparent, #d8ecff 25% 75%, transparent);
+      transform-origin: center;
+      animation: draw-rule 1.4s .8s both;
+    }
+    .message {
+      margin: 0 auto;
+      max-width: 550px;
+      color: #d8e5f5;
+      font-size: clamp(14px, 1.15vw, 16px);
+      line-height: 1.94;
+      font-weight: 400;
+      text-wrap: pretty;
+      animation: reveal-up .9s .4s both;
+    }
+    .signature-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 29px;
+      animation: reveal-up .9s .5s both;
+    }
+    .signature {
+      width: min(70vw, 335px);
+      height: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: .95;
+      animation: sign-in 2.6s 1s both;
+    }
+    .signature-caption {
+      margin-top: 4px;
+      color: #b8cbe5;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 47px;
+      margin-top: 34px;
+      padding: 13px 23px;
+      border: 1px solid rgba(214, 233, 255, .32);
+      border-radius: 3px;
+      background: rgba(180, 216, 252, .075);
+      color: #f8fbff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .035em;
+      text-decoration: none;
+      transition: background .25s ease, border-color .25s ease, transform .25s ease;
+      animation: reveal-up .85s .7s both;
+    }
+    .contact-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+    .contact-link:hover { background: rgba(180, 216, 252, .15); border-color: rgba(214, 233, 255, .65); transform: translateY(-2px); }
+
+    .site-footer { width: 100%; }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding-block: 28px 32px;
+      border-top: 1px solid var(--fine);
+    }
+    .copyright {
+      margin: 0;
+      max-width: 700px;
+      color: #aebfd8;
+      font-size: 11px;
+      line-height: 1.8;
+      letter-spacing: .015em;
+    }
+    .site-footer a { color: #e0edff; text-decoration: none; border-bottom: 1px solid rgba(222, 238, 255, .24); transition: color .2s; }
+    .footer-slogan {
+      margin: 0;
+      font-size: 11px;
+      color: #b7cce8;
+      font-style: italic;
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    @keyframes reveal-up {
+      from { opacity: 0; transform: translateY(17px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes draw-rule { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+    @keyframes sign-in {
+      0% { opacity: 0; clip-path: inset(0 100% 0 0); }
+      15% { opacity: .95; }
+      100% { opacity: .95; clip-path: inset(0 0 0 0); }
+    }
+    @keyframes blue-sheen { from { transform: translateX(-65%); } to { transform: translateX(45%); } }
+
+    @media (max-width: 750px) {
+      .header-inner, .footer-inner { width: min(100% - 38px, 1392px); }
+      .header-inner { min-height: 89px; gap: 10px; }
+      .identity { gap: 10px; }
+      .identity img { height: 47px; width: 47px; }
+      .identity-name { font-size: 9px; letter-spacing: .06em; }
+      .programme-link { gap: 8px; }
+      .programme-label { font-size: 7px; letter-spacing: .13em; }
+      .programme-name { font-size: 9px; max-width: 165px; }
+      .programme-mark { display: none; }
+      .site-main { padding: 68px 0; }
+      .hero-emblem { width: min(85vw, 390px); margin-bottom: 34px; }
+      h1 { letter-spacing: -.06em; }
+      .eyebrow { font-size: 9px; letter-spacing: .18em; }
+      .footer-inner { flex-direction: column; text-align: center; gap: 9px; padding-block: 21px 27px; }
+      .footer-slogan { text-align: center; }
+    }
+    @media (max-width: 390px) {
+      .identity-name { max-width: 105px; }
+      .programme-name { max-width: 125px; }
+      h1 { font-size: 50px; }
+      .message { font-size: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <div class="ambient-globe" aria-hidden="true"></div>
+    <div class="accent-orbit" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="topline" aria-hidden="true"></div>
+      <nav class="header-inner" aria-label="Institutional navigation">
+        <a class="identity" href="./" aria-label="Seychelles National Model United Nations — Home">
+          <img src="assets/snmun-emblem.png" alt="" width="59" height="59">
+          <span class="identity-name">Seychelles National<br>Model United Nations</span>
+        </a>
+        <a class="programme-link" href="https://tyler-nicholas-foundation.online" target="_blank" rel="noopener noreferrer" aria-label="A programme of the Tyler Nicholas Foundation (opens in a new tab)">
+          <span>
+            <span class="programme-label">A programme of</span>
+            <span class="programme-name">Tyler Nicholas Foundation</span>
+          </span>
+          <img class="programme-mark" src="assets/tnf-logo.png" alt="" width="58" height="46">
+        </a>
+      </nav>
+    </header>
+
+    <main class="site-main" id="main-content">
+      <section class="hero" aria-labelledby="page-title">
+        <img class="hero-emblem" src="assets/snmun-logo.png" alt="Seychelles Model United Nations" width="470" height="157">
+        <p class="eyebrow">Our website is being prepared</p>
+        <h1 id="page-title">Coming Soon!</h1>
+        <div class="fine-rule" aria-hidden="true"></div>
+        <p class="message">Our official digital platform is currently under development.<br>We look forward to welcoming you soon.</p>
+
+        <div class="signature-area">
+          <img class="signature" src="assets/snmun-signature.png" alt="Official signature mark of Seychelles National Model United Nations" width="335" height="112">
+          <span class="signature-caption">Seychelles National Model United Nations</span>
+        </div>
+
+        <a class="contact-link" href="mailto:info@snumun.online" aria-label="Email info@snumun.online">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.7" y="5.2" width="18.6" height="13.6" rx="1.5"></rect><path d="m3.7 6.4 8.3 6.6 8.3-6.6"></path></svg>
+          info@snumun.online
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="copyright">&copy; <span id="copyright-year">2026</span> Seychelles National Model United Nations. A programme of the <a href="https://tyler-nicholas-foundation.online" target="_blank" rel="noopener noreferrer">Tyler Nicholas Foundation</a>. All rights reserved.</p>
+        <p class="footer-slogan">From Seychelles to the world, Diplomacy Begins Here.</p>
+      </div>
+    </footer>
+  </div>
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
