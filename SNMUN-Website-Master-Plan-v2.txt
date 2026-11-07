@@ -1,0 +1,405 @@
+# SNMUN Official Website
+
+REVISED WEBSITE DEVELOPMENT MASTER PLAN — VERSION 2.0
+
+Project: Seychelles National Model United Nations Official Website
+
+Institution: Tyler Nicholas Foundation
+
+Backend: Supabase
+
+Platform: Public Website + Private Management Portal
+
+Session: 2027 — Draft / Unconfirmed
+
+Core principle: Everything on the public website must be manageable through the private dashboard.
+
+The most important change is that we are removing the Delegate/User Portal completely.
+
+Instead, we will build two connected systems:
+
+PUBLIC SNMUN WEBSITE
+
+Visitors · Delegates · Schools · Institutions · Media
+
+Professional, informative, publicly accessible. No visitor accounts required.
+
+Controlled content and data flow
+
+PRIVATE MANAGEMENT PORTAL
+
+Chairperson · Deputy Chairperson · Secretary · Authorized TNF oversight
+
+Complete website administration, content control, programme management and confidential records.
+
+Secured connection
+
+SUPABASE
+
+PostgreSQL · Authentication · Storage · Server Functions
+
+## 1. Final public website sitemap
+
+The website will use a clean navigation system with independently manageable pages.
+
+| Primary area          | Pages                                                                                                                                          |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Home                  | Home                                                                                                                                           |
+| About                 | Overview, Mission & Vision, Our History, Principles, Governance, Leadership, Tyler Nicholas Foundation, FAQs                                   |
+| Programmes            | Overview, SNMUN Academy, Conference Programme, School Network, Diplomatic Activities, Annual General Assembly, Alumni                          |
+| Annual Sessions       | Sessions Overview, Inaugural Session 2027 (draft initially), future sessions, past sessions                                                    |
+| Participation         | How to Participate, Delegate Applications, Independent Delegates, Institutional Participation, Faculty Advisers, Selection Process, Guidelines |
+| Schools & Delegations | Institutions Directory, Delegations, Country Representation, Adviser Resources                                                                 |
+| Events                | Events Calendar, Upcoming Events, Past Events, Event Details                                                                                   |
+| News & Media          | News, Announcements, Press Releases, Statements, Speeches, Photo Gallery, Video Gallery                                                        |
+| Partnerships          | Overview, Institutional Partners, Supporters, Become a Partner                                                                                 |
+| Resources             | Document Library, Policies, Forms, Guides, Official Publications, Resolution Archive                                                           |
+| Contact               | Contact Information, Enquiry Form                                                                                                              |
+| Supporting Pages      | Privacy, Terms, Accessibility, Safeguarding, Copyright, Error Pages                                                                            |
+
+Crucially, these are proposed content structures—not permanently hardcoded pages. The management system must allow the team to create, modify, hide, archive, duplicate, and reorganize most pages, as well as change which pages appear in the navigation.
+
+System-controlled pages, such as legal notices and contact processing, will use protected templates to prevent accidental removal of essential functionality.
+
+## 2. Full Management Portal sitemap
+
+Recommended URL: `admin.snm...` — final domain to be confirmed
+
+The Management Portal is the most important engineering component. It must provide a unified administrative environment rather than requiring staff to edit the database manually.
+
+SNMUN Management
+
+Private
+
+Dashboard
+
+Website Builder
+
+Pages & Content
+
+Announcements
+
+Annual Sessions
+
+Events & Activities
+
+News & Media
+
+Forms & Submissions
+
+Institutions
+
+Delegates & Records
+
+Partners
+
+Media & Documents
+
+Enquiries & Email
+
+Analytics & Reports
+
+Staff & Permissions
+
+Audit & History
+
+Website Settings
+
+Backups & Maintenance
+
+### Management modules and capabilities
+
+| Module              | Administrative control                                                                                     |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Dashboard           | Website status, draft approvals, submissions, enquiries, events, tasks and activity overview               |
+| Website Builder     | Rearrange homepage blocks, manage layouts, headings, buttons and page sections                             |
+| Pages & Content     | Create, edit, duplicate, publish, schedule, archive, redirect and restore pages                            |
+| Announcements       | Manage top bars, sitewide notices, urgent updates and expiry dates                                         |
+| Annual Sessions     | Create and manage any year, its status, programme, milestones, country allocations, committees and results |
+| Events              | Create events, add venue/date, change registration status, postpone, cancel or archive                     |
+| News & Media        | Articles, releases, galleries, statements and editorial workflows                                          |
+| Forms & Submissions | Configure public forms, manage approved Google Forms links, review and export submissions                  |
+| Institutions        | Maintain school records, institution profiles, contacts and participation statuses                         |
+| Delegates & Records | Secure internal records, eligibility, selection status and document references                             |
+| Partners            | Internal partnership register, public acknowledgement approval and partner pages                           |
+| Media & Documents   | Upload, replace, organize and manage public/private files                                                  |
+| Enquiries & Email   | Contact enquiries, internal assignment, responses and communication templates                              |
+| Analytics           | Website traffic, content statistics, registration figures and exportable reports                           |
+| Staff & Permissions | Manage administrative accounts, access scopes and approval permissions                                     |
+| Audit & History     | Trace administrative actions, published changes and content revisions                                      |
+| Settings            | Branding, menus, footer, SEO, languages, social links and integrations                                     |
+| Maintenance         | Maintenance mode, backups, security monitoring and emergency controls                                      |
+
+## 3. The dynamic Annual Sessions system
+
+This directly addresses your concern about the Inaugural Session 2027.
+
+The 2027 session must not be permanently coded into the website. Instead, the website will have a reusable Annual Session content type.
+
+Example: Inaugural Session 2027
+
+Draft
+
+Session title
+
+Inaugural Session 2027
+
+Year
+
+2027
+
+Theme
+
+Not confirmed
+
+Public visibility
+
+Hidden
+
+The administrative team can prepare the entire session privately, add content, revise details, and publish only after formal authorization.
+
+### Session management controls
+
+Every annual session should support:
+
+- Session name, year, description, theme and official imagery
+- Draft, pending approval, confirmed, active, completed, postponed, cancelled or archived status
+- Separate public visibility and publication date
+- Editable opening and closing dates
+- Application opening/closing status and deadlines
+- School and delegate capacity settings
+- Committee and agenda management
+- Country allocation records
+- Event and Academy schedule connections
+- Session-specific announcements and documents
+- Awards, adopted resolutions and results
+- Photography, media releases and reports
+- Duplicate previous session to create the next year
+
+The public-facing URL could remain `/sessions/2027/`, but while the session is unconfirmed it should not be accessible to ordinary visitors.
+
+This creates an important distinction:
+
+Operational status describes where the programme stands internally. Publication status determines what the public can see. An internal session might be marked Under Planning while its public visibility remains Hidden.
+
+## 4. Dynamic Website Builder
+
+Rather than building each page as a rigid template, I recommend a controlled component-based content management system.
+
+Administrators will choose from professionally designed section types and arrange them into pages.
+
+Homepage Editor — Proposed
+
+Preview
+
+Hero Banner
+
+Visible
+
+About SNMUN
+
+Visible
+
+Programme Highlights
+
+Visible
+
+Latest News
+
+Visible
+
+Annual Session Spotlight
+
+Hidden
+
+Events Calendar
+
+Visible
+
+Partners
+
+Hidden
+
+Interactive example only. Try hiding a homepage section or changing its order. The real builder would additionally allow editing, adding and removing sections, saving drafts and publishing.
+
+The reusable section library should include hero banners, introductions, rich text, image galleries, videos, statistics, timelines, testimonials, staff profiles, partner logos, accordions, call-to-action banners, application blocks, document downloads, news feeds and event lists.
+
+Staff should be able to control section order, content, images, button labels, links, layout variants, visibility and scheduled publication. Fonts, spacing and colors should remain governed by the official brand system, with controlled design overrides where appropriate.
+
+## 5. Global announcement management
+
+The announcement bar must be entirely dashboard-controlled.
+
+Announcement Bar Editor — Concept
+
+Enable announcement bar
+
+Message
+
+Official information regarding the next SNMUN annual session will be published following confirmation.
+
+Style
+
+Navy
+
+Gold
+
+Light
+
+Live preview
+
+Official information regarding the next SNMUN annual session will be published following confirmation.
+
+This preview does not make changes to the actual website.
+
+The actual portal should additionally support multiple notices, urgency levels, audience/placement, priority ordering, button links, automatic start/end times, draft and approved states, and immediate emergency removal.
+
+## 6. Supabase technical architecture
+
+Recommended stack:
+
+| Layer             | Technology                                                                    |
+| ----------------- | ----------------------------------------------------------------------------- |
+| Website frontend  | Next.js with TypeScript                                                       |
+| Styling           | Tailwind CSS and reusable SNMUN design components                             |
+| Management Portal | Protected Next.js administration application                                  |
+| Database          | Supabase PostgreSQL                                                           |
+| Authentication    | Supabase Auth — administrative accounts only                                  |
+| File Storage      | Supabase Storage, separate public and private buckets                         |
+| Server operations | Secure Next.js server functions and Supabase Edge Functions where appropriate |
+| Authorization     | PostgreSQL RLS, permission matrix and server-side validation                  |
+| Email             | Transactional email service integrated through secure server-side functions   |
+| Hosting           | Managed Next.js hosting with production, staging and development environments |
+| Analytics         | Privacy-conscious analytics integration                                       |
+| Version control   | Git repository, migrations, code review and controlled deployments            |
+
+Supabase supports granular database access through Row Level Security, and Storage permissions can likewise be managed through policies. Those protections must be configured carefully; using Supabase alone does not automatically make confidential records safe.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://supabase.com\&sz=32)
+
+Supabase Docs+1
+
+
+
+### Main database entities
+
+The initial schema should cover:
+
+`pages`, `page_versions`, `page_blocks`, `navigation_menus`, `site_settings`, `announcements`, `news_posts`, `media_assets`, `documents`, `annual_sessions`, `session_committees`, `countries`, `institutions`, `delegations`, `delegate_records`, `events`, `forms`, `submissions`, `partners`, `contact_enquiries`, `staff_profiles`, `staff_permissions`, `publication_approvals`, `audit_logs`, and `redirects`.
+
+These are logical groups, not a finalized SQL schema. The detailed design should define relationships, constraints, retention rules and security policies before development.
+
+## 7. Confidential records and administration
+
+Because we will store both public content and confidential institutional records, the platform should separate them at the database and storage authorization layers.
+
+Public content
+
+Published pages, approved school profiles, news articles, public event details, announcements and downloadable public resources.
+
+Restricted administrative content
+
+Draft documents, institutional correspondence, internal plans, unconfirmed session information, partner discussions and confidential minutes.
+
+Sensitive personal information
+
+Delegate applications, contact information, dates of birth, safeguarding-related records, selection assessments and supporting documentation.
+
+Security requirements include staff-only authentication, mandatory multifactor authentication, granular permissions, private storage with expiring access links, audit trails, controlled exports, secure backups, retention and deletion procedures, and tests that confirm public visitors cannot access draft or confidential data.
+
+The three existing setup roles remain Chairperson, Deputy Chairperson and Secretary. The portal should implement permission settings for these existing positions, with any TNF oversight access granted through an approved arrangement—not automatically assume everyone has unrestricted access.
+
+## 8. Publishing and approvals
+
+No unconfirmed information should appear publicly simply because it exists in Supabase.
+
+The content publishing workflow should be:
+
+Draft
+
+Create and edit privately
+
+Internal Review
+
+Check details and accuracy
+
+Approval
+
+Authorized decision to publish
+
+Scheduled / Published
+
+Public visibility activated
+
+Archived
+
+Retained or withdrawn according to policy
+
+The system should save revisions, allow previewing unpublished pages, record the author and approver, and support rollback to a previously published version.
+
+For example, administrators can fully prepare the Inaugural Session 2027 page today, leave it in Draft, and later make it visible through a controlled approval and publication action.
+
+## 9. Forms and operational data
+
+The existing six Google Forms should be supported from the outset, without requiring us to recreate them immediately.
+
+The Management Portal should allow staff to manage each form's purpose, public-facing label, URL, linked page, opening and closing status, instructions and administrative owner.
+
+If Google Forms responses are to be available inside the portal, that must be implemented as a separate authenticated integration or authorized import process. Merely inserting a Google Form into a website does not securely synchronize its submissions into Supabase.
+
+Later, SNMUN can replace selected forms with native website forms backed by Supabase, maintaining the same administrative workflow without introducing delegate accounts.
+
+## 10. Development project phases
+
+| Phase                     | Deliverables                                                                                | Completion condition                           |
+| ------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| 1. Project specification  | Approved sitemap, page types, admin requirements, role matrix, data classification          | Scope and governance confirmed                 |
+| 2. Technical foundation   | Next.js project, Supabase environment, authentication, baseline database, security policies | Environment and security tests pass            |
+| 3. Core CMS               | Page builder, menus, media library, announcements, SEO, publishing workflow                 | Nontechnical admin can manage primary pages    |
+| 4. Institutional website  | Homepage, About, Programmes, Governance, Contact and legal pages                            | Public templates are responsive and accessible |
+| 5. Annual session engine  | Dynamic years, session pages, draft controls, event and programme connections               | 2027 can be prepared without publication       |
+| 6. Operations & records   | Forms, institutional records, delegate data, documents, partners, enquiries                 | Permissions and workflows validated            |
+| 7. Reporting & automation | Administrative summaries, reminders, content scheduling, approved exports                   | Reports and automated actions verified         |
+| 8. Quality assurance      | Security audit, device testing, content approvals, performance and recovery testing         | Formal launch acceptance                       |
+| 9. Deployment             | Production domain, hosting, backups, monitoring and training                                | Authorized public launch                       |
+
+## 11. Project acceptance requirements
+
+The entire project should be judged against practical tests, including whether an authorized staff member can:
+
+- Create and publish a new page without a developer.
+- Change the homepage design and reorder sections.
+- Change navigation labels, dropdowns and links.
+- Create an announcement and set its expiry time.
+- Create a 2027 session privately, then publish it only after approval.
+- Add a future annual session without changing source code.
+- Upload, organize and replace public and confidential files.
+- Publish news, events, press releases and photo galleries.
+- Manage school, delegation and application records securely.
+- Change official website content, footer, contact details and social links.
+- Review activity history and restore a previous page version.
+- Export authorized operational reports.
+- Confirm that unauthenticated visitors cannot access private records.
+- Recover from an accidental content deletion or failed deployment.
+
+One engineering limitation should be explicit: Almost all day-to-day content and operational administration should be possible within the portal. Fundamental changes to application code, security policy logic, integrations, or underlying infrastructure will still require controlled technical changes and deployment. Giving the CMS unrestricted power to execute arbitrary code or alter database security would create unnecessary risks.
+
+## 12. Non-negotiable project decisions
+
+No delegate or public user accounts
+
+One comprehensive private Management Portal
+
+Supabase as the centralized backend
+
+All standard website content controlled in the dashboard
+
+Dynamic, reusable annual sessions
+
+Unconfirmed content remains private
+
+Strict protection of confidential programme data
+
+This is the architecture I recommend adopting for SNMUN. It is substantial enough to support the entire national programme over multiple years, while allowing the administrative team to operate the website independently after development.
+
+The next technical deliverable should be the Management Portal Specification: an exact screen-by-screen plan of the admin dashboard, including every menu, editor, control, database field, user permission, and publishing workflow. That should be finalized before building the Supabase database and website components.
