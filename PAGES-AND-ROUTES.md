@@ -1,0 +1,64 @@
+# SNMUN homepage package — navigation routes
+
+- About: `/about/`
+- Overview: `/about/`
+- FAQs: `/about/faqs/`
+- Governance: `/about/governance/`
+- Our History: `/about/history/`
+- Leadership: `/about/leadership/`
+- Mission & Vision: `/about/mission-vision/`
+- Principles & Values: `/about/principles/`
+- Tyler Nicholas Foundation: `/about/tyler-nicholas-foundation/`
+- Contact: `/contact/`
+- Events Calendar: `/events/`
+- Past Events: `/events/past/`
+- Upcoming Events: `/events/upcoming/`
+- Accessibility: `/legal/accessibility/`
+- Copyright: `/legal/copyright/`
+- Privacy Policy: `/legal/privacy/`
+- Safeguarding: `/legal/safeguarding/`
+- Terms of Use: `/legal/terms/`
+- News & Events: `/news-media/`
+- News & Media: `/news-media/`
+- Announcements: `/news-media/announcements/`
+- Latest News: `/news-media/news/`
+- Photo Gallery: `/news-media/photos/`
+- Press Releases: `/news-media/press-releases/`
+- Speeches: `/news-media/speeches/`
+- Statements: `/news-media/statements/`
+- Video Gallery: `/news-media/videos/`
+- How to Participate: `/participation/`
+- Participation: `/participation/`
+- Delegate Applications: `/participation/delegates/`
+- Faculty Advisers: `/participation/faculty-advisers/`
+- Guidelines: `/participation/guidelines/`
+- Independent Delegates: `/participation/independent-delegates/`
+- Institutional Participation: `/participation/institutions/`
+- Selection Process: `/participation/selection/`
+- Partnerships: `/partnerships/`
+- Overview: `/programmes/`
+- Programmes: `/programmes/`
+- SNMUN Academy: `/programmes/academy/`
+- Alumni: `/programmes/alumni/`
+- Conference Programme: `/programmes/conference/`
+- Diplomatic Activities: `/programmes/diplomatic-activities/`
+- Annual General Assembly: `/programmes/general-assembly/`
+- School Network: `/programmes/school-network/`
+- Overview: `/resources/`
+- Resources: `/resources/`
+- Document Library: `/resources/documents/`
+- Forms: `/resources/forms/`
+- Guides: `/resources/guides/`
+- Policies: `/resources/policies/`
+- Publications: `/resources/publications/`
+- Resolution Archive: `/resources/resolutions/`
+- Overview: `/schools-delegations/`
+- Schools: `/schools-delegations/`
+- Adviser Resources: `/schools-delegations/adviser-resources/`
+- Country Representation: `/schools-delegations/countries/`
+- Delegations: `/schools-delegations/delegations/`
+- Institutions Directory: `/schools-delegations/institutions/`
+- Annual Sessions: `/sessions/`
+- Sessions Overview: `/sessions/`
+
+Only the **Home** page is designed and complete. All other folder routes are intentionally marked as **in preparation** and have `noindex`. The unpublished 2027 annual session has **no public page**.

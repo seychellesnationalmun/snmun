@@ -1,410 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#071d42">
-  <meta name="description" content="The official website of Seychelles National Model United Nations, a programme of the Tyler Nicholas Foundation, is coming soon.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Seychelles National Model United Nations — Coming Soon">
-  <meta property="og:description" content="From Seychelles to the world, Diplomacy Begins Here. Our official website is being prepared.">
-  <meta property="og:image" content="assets/snmun-banner.png">
-  <title>Home: Seychelles National Model United Nations</title>
-  <link rel="icon" type="image/png" href="assets/snmun-emblem.png">
-  <link rel="apple-touch-icon" href="assets/snmun-emblem.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --midnight: #051733;
-      --navy: #071d42;
-      --blue: #145cac;
-      --pale: #f4f8ff;
-      --mist: #cedbf0;
-      --fine: rgba(229, 238, 255, .21);
-      --font-body: "DM Sans", "Segoe UI", Arial, sans-serif;
-      --font-display: "Libre Baskerville", Georgia, "Times New Roman", serif;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-height: 100svh;
-      color: var(--pale);
-      background: var(--midnight);
-      font-family: var(--font-body);
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; }
-    a:focus-visible { outline: 2px solid #9acaff; outline-offset: 5px; border-radius: 3px; }
-    ::selection { background: #b9dafc; color: #051733; }
-
-    .site {
-      position: relative;
-      isolation: isolate;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse 62% 46% at 51% 45%, rgba(31, 111, 191, .40), transparent 77%),
-        radial-gradient(ellipse 34% 52% at 1% 17%, rgba(16, 81, 155, .38), transparent 74%),
-        radial-gradient(ellipse 34% 52% at 97% 86%, rgba(13, 72, 139, .37), transparent 75%),
-        linear-gradient(132deg, #061730 3%, #0a2856 48%, #061a3b 100%);
-    }
-    .site::before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      opacity: .5;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(177, 215, 255, .027) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(177, 215, 255, .027) 1px, transparent 1px);
-      background-size: 88px 88px;
-      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 84%, transparent);
-      mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 84%, transparent);
-    }
-    .site::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      opacity: .53;
-      pointer-events: none;
-      background: linear-gradient(105deg, transparent 32%, rgba(163, 214, 255, .045) 48%, transparent 64%);
-      transform: translateX(-35%);
-      animation: blue-sheen 15s ease-in-out infinite alternate;
-    }
-    .ambient-globe {
-      position: absolute;
-      z-index: -1;
-      top: 50%; left: 50%;
-      width: min(81vw, 920px);
-      aspect-ratio: 1;
-      transform: translate(-50%, -49%);
-      border: 1px solid rgba(193, 220, 255, .075);
-      border-radius: 50%;
-      box-shadow: 0 0 0 84px rgba(209, 230, 255, .015), 0 0 0 168px rgba(209, 230, 255, .009), inset 0 0 145px rgba(27, 119, 215, .06);
-      pointer-events: none;
-    }
-    .ambient-globe::before, .ambient-globe::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(187, 219, 255, .063);
-      border-radius: 50%;
-    }
-    .ambient-globe::before { inset: -1px 24%; }
-    .ambient-globe::after { inset: 32% -1px; }
-    .accent-orbit {
-      position: absolute;
-      inset: auto -20vw -470px -20vw;
-      height: 620px;
-      border: 1px solid rgba(191, 221, 255, .09);
-      border-radius: 50% 50% 0 0;
-      transform: rotate(-4deg);
-      pointer-events: none;
-    }
-
-    .topline {
-      height: 3px;
-      background: linear-gradient(90deg, #0f4186, #b2dafa 50%, #0f4186);
-      opacity: .85;
-    }
-    .site-header, .site-footer { position: relative; z-index: 1; }
-    .header-inner, .footer-inner {
-      width: min(100% - 96px, 1392px);
-      margin-inline: auto;
-    }
-    .header-inner {
-      min-height: 111px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-      border-bottom: 1px solid var(--fine);
-    }
-    .identity {
-      display: inline-flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
-      min-width: 0;
-    }
-    .identity img {
-      height: 59px;
-      width: 59px;
-      object-fit: contain;
-      filter: brightness(0) invert(1);
-    }
-    .identity-name {
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.44;
-      letter-spacing: .105em;
-      text-transform: uppercase;
-    }
-    .programme-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 18px;
-      text-decoration: none;
-      padding: 9px 0;
-    }
-    .programme-label {
-      display: block;
-      color: #bfcee4;
-      font-size: 9px;
-      letter-spacing: .24em;
-      text-transform: uppercase;
-      text-align: right;
-      margin-bottom: 5px;
-    }
-    .programme-name {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .03em;
-      text-align: right;
-    }
-    .programme-mark {
-      height: 46px;
-      width: 58px;
-      object-fit: contain;
-      filter: brightness(0) invert(1);
-      opacity: .9;
-    }
-    .programme-link:hover .programme-name,
-    .contact-link:hover,
-    .site-footer a:hover { color: #bedfff; }
-
-    .site-main {
-      width: min(100% - 40px, 1100px);
-      margin: auto;
-      flex: 1;
-      display: grid;
-      place-items: center;
-      position: relative;
-      z-index: 1;
-      padding: 68px 0 83px;
-    }
-    .hero { text-align: center; width: 100%; }
-    .hero-emblem {
-      width: min(83vw, 470px);
-      height: auto;
-      display: block;
-      margin: 0 auto 43px;
-      filter: brightness(0) invert(1);
-      opacity: .96;
-      animation: reveal-up 1.2s both;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin: 0 0 24px;
-      color: #bcd8f7;
-      font-size: 10px;
-      font-weight: 700;
-      line-height: 1.5;
-      letter-spacing: .33em;
-      text-transform: uppercase;
-      animation: reveal-up .85s .12s both;
-    }
-    .eyebrow::before, .eyebrow::after { content: ""; width: 33px; height: 1px; background: rgba(205, 230, 255, .5); }
-    h1 {
-      margin: 0;
-      font: 400 clamp(56px, 8vw, 110px) / 1.25 var(--font-display);
-      letter-spacing: -.052em;
-      text-wrap: balance;
-      text-shadow: 0 8px 55px rgba(0, 15, 37, .26);
-      animation: reveal-up 1s .22s both;
-    }
-    .fine-rule {
-      width: 94px;
-      height: 1px;
-      margin: 29px auto 26px;
-      background: linear-gradient(90deg, transparent, #d8ecff 25% 75%, transparent);
-      transform-origin: center;
-      animation: draw-rule 1.4s .8s both;
-    }
-    .message {
-      margin: 0 auto;
-      max-width: 550px;
-      color: #d8e5f5;
-      font-size: clamp(14px, 1.15vw, 16px);
-      line-height: 1.94;
-      font-weight: 400;
-      text-wrap: pretty;
-      animation: reveal-up .9s .4s both;
-    }
-    .signature-area {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 29px;
-      animation: reveal-up .9s .5s both;
-    }
-    .signature {
-      width: min(70vw, 335px);
-      height: auto;
-      object-fit: contain;
-      filter: brightness(0) invert(1);
-      opacity: .95;
-      animation: sign-in 2.6s 1s both;
-    }
-    .signature-caption {
-      margin-top: 4px;
-      color: #b8cbe5;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-    }
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      min-height: 47px;
-      margin-top: 34px;
-      padding: 13px 23px;
-      border: 1px solid rgba(214, 233, 255, .32);
-      border-radius: 3px;
-      background: rgba(180, 216, 252, .075);
-      color: #f8fbff;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .035em;
-      text-decoration: none;
-      transition: background .25s ease, border-color .25s ease, transform .25s ease;
-      animation: reveal-up .85s .7s both;
-    }
-    .contact-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.5; }
-    .contact-link:hover { background: rgba(180, 216, 252, .15); border-color: rgba(214, 233, 255, .65); transform: translateY(-2px); }
-
-    .site-footer { width: 100%; }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      padding-block: 28px 32px;
-      border-top: 1px solid var(--fine);
-    }
-    .copyright {
-      margin: 0;
-      max-width: 700px;
-      color: #aebfd8;
-      font-size: 11px;
-      line-height: 1.8;
-      letter-spacing: .015em;
-    }
-    .site-footer a { color: #e0edff; text-decoration: none; border-bottom: 1px solid rgba(222, 238, 255, .24); transition: color .2s; }
-    .footer-slogan {
-      margin: 0;
-      font-size: 11px;
-      color: #b7cce8;
-      font-style: italic;
-      text-align: right;
-      line-height: 1.6;
-    }
-
-    @keyframes reveal-up {
-      from { opacity: 0; transform: translateY(17px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes draw-rule { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
-    @keyframes sign-in {
-      0% { opacity: 0; clip-path: inset(0 100% 0 0); }
-      15% { opacity: .95; }
-      100% { opacity: .95; clip-path: inset(0 0 0 0); }
-    }
-    @keyframes blue-sheen { from { transform: translateX(-65%); } to { transform: translateX(45%); } }
-
-    @media (max-width: 750px) {
-      .header-inner, .footer-inner { width: min(100% - 38px, 1392px); }
-      .header-inner { min-height: 89px; gap: 10px; }
-      .identity { gap: 10px; }
-      .identity img { height: 47px; width: 47px; }
-      .identity-name { font-size: 9px; letter-spacing: .06em; }
-      .programme-link { gap: 8px; }
-      .programme-label { font-size: 7px; letter-spacing: .13em; }
-      .programme-name { font-size: 9px; max-width: 165px; }
-      .programme-mark { display: none; }
-      .site-main { padding: 68px 0; }
-      .hero-emblem { width: min(85vw, 390px); margin-bottom: 34px; }
-      h1 { letter-spacing: -.06em; }
-      .eyebrow { font-size: 9px; letter-spacing: .18em; }
-      .footer-inner { flex-direction: column; text-align: center; gap: 9px; padding-block: 21px 27px; }
-      .footer-slogan { text-align: center; }
-    }
-    @media (max-width: 390px) {
-      .identity-name { max-width: 105px; }
-      .programme-name { max-width: 125px; }
-      h1 { font-size: 50px; }
-      .message { font-size: 14px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-    }
-  </style>
-</head>
-<body>
-  <div class="site">
-    <div class="ambient-globe" aria-hidden="true"></div>
-    <div class="accent-orbit" aria-hidden="true"></div>
-
-    <header class="site-header">
-      <div class="topline" aria-hidden="true"></div>
-      <nav class="header-inner" aria-label="Institutional navigation">
-        <a class="identity" href="./" aria-label="Seychelles National Model United Nations — Home">
-          <img src="assets/snmun-emblem.png" alt="" width="59" height="59">
-          <span class="identity-name">Seychelles National<br>Model United Nations</span>
-        </a>
-        <a class="programme-link" href="https://tyler-nicholas-foundation.online" target="_blank" rel="noopener noreferrer" aria-label="A programme of the Tyler Nicholas Foundation (opens in a new tab)">
-          <span>
-            <span class="programme-label">A programme of</span>
-            <span class="programme-name">Tyler Nicholas Foundation</span>
-          </span>
-          <img class="programme-mark" src="assets/tnf-logo.png" alt="" width="58" height="46">
-        </a>
-      </nav>
-    </header>
-
-    <main class="site-main" id="main-content">
-      <section class="hero" aria-labelledby="page-title">
-        <img class="hero-emblem" src="assets/snmun-logo.png" alt="Seychelles Model United Nations" width="470" height="157">
-        <p class="eyebrow">Our website is being prepared</p>
-        <h1 id="page-title">Coming Soon!</h1>
-        <div class="fine-rule" aria-hidden="true"></div>
-        <p class="message">Our official digital platform is currently under development.<br>We look forward to welcoming you soon.</p>
-
-        <div class="signature-area">
-          <img class="signature" src="assets/snmun-signature.png" alt="Official signature mark of Seychelles National Model United Nations" width="335" height="112">
-          <span class="signature-caption">Seychelles National Model United Nations</span>
-        </div>
-
-        <a class="contact-link" href="mailto:info@snumun.online" aria-label="Email info@snumun.online">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.7" y="5.2" width="18.6" height="13.6" rx="1.5"></rect><path d="m3.7 6.4 8.3 6.6 8.3-6.6"></path></svg>
-          info@snumun.online
-        </a>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <p class="copyright">&copy; <span id="copyright-year">2026</span> Seychelles National Model United Nations. A programme of the <a href="https://tyler-nicholas-foundation.online" target="_blank" rel="noopener noreferrer">Tyler Nicholas Foundation</a>. All rights reserved.</p>
-        <p class="footer-slogan">From Seychelles to the world, Diplomacy Begins Here.</p>
-      </div>
-    </footer>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="color-scheme" content="light"/><meta name="theme-color" content="#0b2b50"/><meta name="description" content="Seychelles National Model United Nations is a national youth diplomacy education programme of the Tyler Nicholas Foundation."/><meta name="robots" content="noindex,nofollow"/><meta property="og:type" content="website"/><meta property="og:title" content="Home | Seychelles National Model United Nations"/><meta property="og:description" content="From Seychelles to the world, Diplomacy Begins Here."/><link rel="icon" href="./assets/images/snmun-emblem.png" type="image/png"/><link rel="apple-touch-icon" href="./assets/images/snmun-emblem.png"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet"/><link rel="stylesheet" href="./assets/css/site.css"/><title>Home | Seychelles National Model United Nations</title></head>
+<body data-root="./" data-page="home"><a class="skip-link" href="#main-content">Skip to content</a><div id="announcement-bar" class="announcement-bar" hidden aria-live="polite"></div>
+<header class="site-header" id="site-header"><div class="shell header-inner">
+<a class="logo-link" href="/" aria-label="Seychelles National Model United Nations — Home"><img src="./assets/images/snmun-logo.png" width="238" height="66" alt="Seychelles Model United Nations" /></a>
+<button class="mobile-nav-toggle" aria-label="Open main menu" aria-controls="site-navigation" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
+<nav class="navigation" id="site-navigation" aria-label="Main navigation"><ul class="nav-list"><li class="nav-item"><a class="nav-main" href="/">Home</a></li><li class="nav-item nav-has-submenu"><div class="nav-parent"><a class="nav-main" href="/about/">About</a><button type="button" class="submenu-toggle" aria-label="Expand About menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button></div><div class="submenu" role="group" aria-label="About subpages"><div class="submenu-inner"><a href="/about/">Overview</a><a href="/about/mission-vision/">Mission &amp; Vision</a><a href="/about/history/">Our History</a><a href="/about/principles/">Principles &amp; Values</a><a href="/about/governance/">Governance</a><a href="/about/leadership/">Leadership</a><a href="/about/tyler-nicholas-foundation/">Tyler Nicholas Foundation</a><a href="/about/faqs/">FAQs</a></div></div></li><li class="nav-item nav-has-submenu"><div class="nav-parent"><a class="nav-main" href="/programmes/">Programmes</a><button type="button" class="submenu-toggle" aria-label="Expand Programmes menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button></div><div class="submenu" role="group" aria-label="Programmes subpages"><div class="submenu-inner"><a href="/programmes/">Overview</a><a href="/programmes/academy/">SNMUN Academy</a><a href="/programmes/conference/">Conference Programme</a><a href="/programmes/school-network/">School Network</a><a href="/programmes/diplomatic-activities/">Diplomatic Activities</a><a href="/programmes/general-assembly/">Annual General Assembly</a><a href="/programmes/alumni/">Alumni</a></div></div></li><li class="nav-item nav-has-submenu"><div class="nav-parent"><a class="nav-main" href="/sessions/">Annual Sessions</a><button type="button" class="submenu-toggle" aria-label="Expand Annual Sessions menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button></div><div class="submenu" role="group" aria-label="Annual Sessions subpages"><div class="submenu-inner"><a href="/sessions/">Sessions Overview</a></div></div></li><li class="nav-item nav-has-submenu"><div class="nav-parent"><a class="nav-main" href="/participation/">Participation</a><button type="button" class="submenu-toggle" aria-label="Expand Participation menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button></div><div class="submenu" role="group" aria-label="Participation subpages"><div class="submenu-inner"><a href="/participation/">How to Participate</a><a href="/participation/delegates/">Delegate Applications</a><a href="/participation/independent-delegates/">Independent Delegates</a><a href="/participation/institutions/">Institutional Participation</a><a href="/participation/faculty-advisers/">Faculty Advisers</a><a href="/participation/selection/">Selection Process</a><a href="/participation/guidelines/">Guidelines</a></div></div></li><li class="nav-item nav-has-submenu"><div class="nav-parent"><a class="nav-main" href="/schools-delegations/">Schools</a><button type="button" class="submenu-toggle" aria-label="Expand Schools menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button></div><div class="submenu" role="group" aria-label="Schools subpages"><div class="submenu-inner"><a href="/schools-delegations/">Overview</a><a href="/schools-delegations/institutions/">Institutions Directory</a><a href="/schools-delegations/delegations/">Delegations</a><a href="/schools-delegations/countries/">Country Representation</a><a href="/schools-delegations/adviser-resources/">Adviser Resources</a></div></div></li><li class="nav-item nav-has-submenu"><div class="nav-parent"><a class="nav-main" href="/news-media/">News &amp; Events</a><button type="button" class="submenu-toggle" aria-label="Expand News &amp; Events menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button></div><div class="submenu" role="group" aria-label="News &amp; Events subpages"><div class="submenu-inner"><a href="/news-media/">News &amp; Media</a><a href="/news-media/news/">Latest News</a><a href="/news-media/announcements/">Announcements</a><a href="/news-media/press-releases/">Press Releases</a><a href="/news-media/statements/">Statements</a><a href="/news-media/speeches/">Speeches</a><a href="/news-media/photos/">Photo Gallery</a><a href="/news-media/videos/">Video Gallery</a><a href="/events/">Events Calendar</a><a href="/events/upcoming/">Upcoming Events</a><a href="/events/past/">Past Events</a></div></div></li><li class="nav-item nav-has-submenu"><div class="nav-parent"><a class="nav-main" href="/resources/">Resources</a><button type="button" class="submenu-toggle" aria-label="Expand Resources menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button></div><div class="submenu" role="group" aria-label="Resources subpages"><div class="submenu-inner"><a href="/resources/">Overview</a><a href="/resources/documents/">Document Library</a><a href="/resources/policies/">Policies</a><a href="/resources/forms/">Forms</a><a href="/resources/guides/">Guides</a><a href="/resources/publications/">Publications</a><a href="/resources/resolutions/">Resolution Archive</a><a href="/partnerships/">Partnerships</a></div></div></li></ul><a class="mobile-contact" href="/contact/">Contact the Secretariat <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></nav>
+<a class="header-contact" href="/contact/">Contact <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
+</div></header><main id="main-content">
+<section class="hero" id="hero" aria-labelledby="hero-title">
+  <div class="hero-poster" aria-hidden="true"></div>
+  <video id="hero-video" class="hero-video" autoplay muted loop playsinline preload="metadata" poster="./assets/images/hero-poster.webp" aria-hidden="true">
+    <source src="./assets/video/snmun-homepage-mobile.mp4" type="video/mp4" media="(max-width: 720px)" />
+    <source src="./assets/video/snmun-homepage-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="shell hero-content"><span class="hero-eyebrow"><i></i>THE NATIONAL PLATFORM FOR YOUTH DIPLOMACY<i></i></span>
+    <h1 id="hero-title"><span class="hero-welcome">Welcome to</span><span class="hero-name">Seychelles National<br/> Model United Nations</span></h1>
+    <p class="hero-slogan">From Seychelles to the world, Diplomacy Begins Here.</p>
   </div>
-  <script>
-    document.getElementById('copyright-year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  <div class="hero-scroll-indicator" aria-hidden="true"><span>SCROLL TO EXPLORE</span><i></i></div>
+</section>
+<section class="section section-intro" aria-labelledby="intro-heading"><div class="shell intro-layout">
+  <div class="intro-text" data-reveal><p class="eyebrow"><span>01</span> / An Introduction</p><h2 class="section-heading" id="intro-heading">A national vision.<br/><em>A global perspective.</em></h2>
+  <div class="section-rule"></div><p class="lead">Seychelles National Model United Nations is a national youth diplomacy and leadership education programme of the Tyler Nicholas Foundation.</p>
+  <p>Through realistic United Nations simulations and year-round educational activities, SNMUN encourages young people to engage with global challenges, strengthen critical thinking, and develop the skills of dialogue, research, negotiation and cooperation.</p>
+  <a class="editorial-link" href="/about/">Discover our institution <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a></div>
+  <figure class="intro-image" data-reveal><img src="./assets/images/un-building.webp" alt="United Nations building and avenue of national flags, from the SNMUN cinematic presentation" width="1120" height="420" loading="lazy"/><figcaption>Diplomacy · Dialogue · Cooperation</figcaption></figure>
+</div></section>
+<section class="section section-programmes" id="programmes" aria-labelledby="programmes-heading"><div class="shell"><div class="section-heading-row" data-reveal><div><p class="eyebrow"><span>02</span> / Our Programmes</p><h2 id="programmes-heading" class="section-heading">Learning through<br/><em>the practice of diplomacy.</em></h2></div><p class="section-side-description">Four connected programmes provide opportunities for diplomatic education, national participation and practical engagement.</p></div>
+<div class="programme-grid"><a class="programme-card" href="/programmes/academy/"><span class="programme-no">01 / ACADEMY</span><span class="programme-body"><span class="programme-title">SNMUN Academy</span><span class="programme-description">Practical learning in diplomacy, research, international affairs and public speaking.</span></span><span class="programme-arrow"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
+<a class="programme-card" href="/programmes/conference/"><span class="programme-no">02 / CONFERENCE</span><span class="programme-body"><span class="programme-title">Conference Programme</span><span class="programme-description">Structured Model UN simulations that bring multilateral discussion into practice.</span></span><span class="programme-arrow"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
+<a class="programme-card" href="/programmes/school-network/"><span class="programme-no">03 / SCHOOLS</span><span class="programme-body"><span class="programme-title">School Network</span><span class="programme-description">Connecting educational institutions through a coordinated national programme.</span></span><span class="programme-arrow"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
+<a class="programme-card" href="/programmes/diplomatic-activities/"><span class="programme-no">04 / ACTIVITIES</span><span class="programme-body"><span class="programme-title">Diplomatic Activities</span><span class="programme-description">Year-round opportunities for dialogue, collaboration and international understanding.</span></span><span class="programme-arrow"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a></div></div></section>
+<section class="participation-section" id="participation" aria-labelledby="participation-heading"><div class="shell participation-layout">
+<div class="participation-image" data-reveal><img src="./assets/images/un-conference.webp" alt="Formal diplomatic conference room with SNMUN presentation screen" width="1120" height="420" loading="lazy"/></div>
+<div class="participation-copy" data-reveal><p class="eyebrow eyebrow-light"><span>03</span> / Participation</p><h2 id="participation-heading" class="section-heading light">A place for the<br/><em>next generation.</em></h2><p>SNMUN creates opportunities for young people and educational institutions across Seychelles to discover international relations, practise diplomacy and develop leadership through informed dialogue.</p><p>Details about delegate participation and institutional involvement will be published when formally authorised.</p><a class="editorial-link editorial-link-light" href="/participation/">Explore participation <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a></div></div></section>
+<section class="section section-news" id="news" aria-labelledby="news-heading"><div class="shell"><div class="section-heading-row" data-reveal><div><p class="eyebrow"><span>04</span> / News & Official Communications</p><h2 id="news-heading" class="section-heading">News from<br/><em>SNMUN.</em></h2></div><a class="editorial-link" href="/news-media/">News & Media <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a></div>
+<div class="feed-container" id="news-feed"><div class="feed-empty"><span class="empty-index">OFFICIAL COMMUNICATIONS</span><h3>Our latest updates will appear here.</h3><p>Official news, statements and programme announcements will be published following approval.</p></div></div></div></section>
+<section class="section section-events" id="events" aria-labelledby="events-heading"><div class="shell"><div class="section-heading-row" data-reveal><div><p class="eyebrow"><span>05</span> / Events & Activities</p><h2 id="events-heading" class="section-heading">Where dialogue<br/><em>comes to life.</em></h2></div><a class="editorial-link" href="/events/">Events & Activities <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a></div>
+<div class="event-panel"><div class="event-photo"><img src="./assets/images/un-assembly.webp" alt="United Nations General Assembly hall from the SNMUN cinematic presentation" width="1120" height="420" loading="lazy" /></div><div class="event-info" id="events-feed"><div class="event-empty"><span>PROGRAMME CALENDAR</span><h3>Forthcoming activities</h3><p>Confirmed events and educational activities will be announced here when scheduled and approved.</p><a class="event-contact" href="mailto:info@snmun.online">Enquiries: info@snmun.online</a></div></div></div></div></section>
+<section class="section section-foundation" id="foundation" aria-labelledby="foundation-heading"><div class="shell foundation-grid"><div data-reveal><p class="eyebrow"><span>06</span> / Institutional Foundation</p><h2 id="foundation-heading" class="section-heading">Rooted in purpose.<br/><em>Committed to tomorrow.</em></h2><p>Seychelles National Model United Nations is a programme of the Tyler Nicholas Foundation, advancing opportunities for youth education, leadership and civic engagement.</p><a class="editorial-link" href="https://tyler-nicholas-foundation.online" target="_blank" rel="noopener noreferrer">Visit the Tyler Nicholas Foundation <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a></div><div class="foundation-art" data-reveal><img src="./assets/images/tnf-logo.png" width="428" height="313" alt="Tyler Nicholas Foundation logo" loading="lazy" /></div></div></section>
+</main><footer class="site-footer" id="site-footer"><div class="shell footer-main"><div class="footer-identity">
+<a href="/" class="footer-logo" aria-label="SNMUN Home"><img src="./assets/images/snmun-logo.png" width="270" height="80" loading="lazy" alt="Seychelles Model United Nations" /></a>
+<p class="footer-tagline">From Seychelles to the world,<br/> Diplomacy Begins Here.</p>
+<div class="social-icons" aria-label="Social media"><span class="social-icon social-unconfigured" data-social="instagram" aria-label="Instagram link awaiting confirmation" title="Instagram profile URL to be configured"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span><span class="social-icon social-unconfigured" data-social="facebook" aria-label="Facebook link awaiting confirmation" title="Facebook profile URL to be configured"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15.2 21v-8h2.7l.5-3.6h-3.2V7.2c0-1 .4-1.6 1.9-1.6h1.5V2.3A21 21 0 0 0 16.5 2c-3.1 0-5.1 1.9-5.1 5.2v2.2H8.7V13h2.7v8z" fill="currentColor" stroke="none"/></svg></span><span class="social-icon social-unconfigured" data-social="linkedin" aria-label="LinkedIn link awaiting confirmation" title="LinkedIn profile URL to be configured"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 8.5V20M4.5 4.5v.2M10 20v-11h4v1.8c.8-1.5 2-2.2 3.6-2.2 3 0 3.9 1.9 3.9 4.6V20M10 13.5v-4.5"/></svg></span><span class="social-icon social-unconfigured" data-social="youtube" aria-label="YouTube link awaiting confirmation" title="YouTube profile URL to be configured"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 6 3-6 3z" fill="currentColor" stroke="none"/></svg></span><span class="social-icon social-unconfigured" data-social="x" aria-label="X link awaiting confirmation" title="X profile URL to be configured"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h3.5l13 18H17L4 3zm15.5 0L4.5 21"/></svg></span><span class="social-icon social-unconfigured" data-social="tiktok" aria-label="TikTok link awaiting confirmation" title="TikTok profile URL to be configured"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.3a3.7 3.7 0 1 1-3.7-3.7M14 3c.8 2.8 2.7 4.8 6 5"/></svg></span></div>
+<a class="footer-email" href="mailto:info@snmun.online">info@snmun.online</a>
+</div><div class="footer-columns"><div class="footer-links"><h3>About SNMUN</h3><a href="/about/">Overview</a><a href="/about/mission-vision/">Mission &amp; Vision</a><a href="/about/governance/">Governance</a><a href="/about/leadership/">Leadership</a><a href="/about/tyler-nicholas-foundation/">Our Foundation</a></div><div class="footer-links"><h3>Programmes</h3><a href="/programmes/academy/">SNMUN Academy</a><a href="/programmes/conference/">Conference Programme</a><a href="/sessions/">Annual Sessions</a><a href="/programmes/school-network/">School Network</a><a href="/participation/">Participation</a></div><div class="footer-links"><h3>Explore & Connect</h3><a href="/news-media/">News &amp; Media</a><a href="/events/">Events</a><a href="/resources/">Resources</a><a href="/partnerships/">Partnerships</a><a href="/contact/">Contact</a></div></div></div>
+<div class="shell footer-bottom"><p class="copyright">© <span id="copyright-year">2026</span> Seychelles National Model United Nations. All rights reserved.</p>
+<p class="foundation-credit">A Programme of the <a href="https://tyler-nicholas-foundation.online" target="_blank" rel="noopener noreferrer">Tyler Nicholas Foundation <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></p>
+<div class="legal-links"><a href="/legal/privacy/">Privacy</a><a href="/legal/terms/">Terms of Use</a><a href="/legal/accessibility/">Accessibility</a><a href="/legal/safeguarding/">Safeguarding</a><a href="/legal/copyright/">Copyright</a></div>
+</div></footer><script src="./assets/js/config.js" defer></script><script src="./assets/js/site.js" defer></script></body></html>
