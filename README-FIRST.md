@@ -1,51 +1,45 @@
-# SNMUN Official Website — Homepage Delivery
+# Seychelles National Model United Nations — Management Portal v1.0
 
-**Homepage version 1.0 — 7 November 2026**
+## What's included
 
-This package is the new **Home page only** with the approved institutional navigation/footer, actual cinematic hero video and six agreed homepage sections. Supporting navigation destinations are simple **in-preparation placeholders**, NOT approved page content. The 2027 draft session is not published or linked.
+- `/admin/index.html` — official staff login and responsive management dashboard
+- `/admin/assets/portal.css` — full blue/white institutional styles
+- `/admin/assets/portal.js` — Supabase Auth (password + authenticator MFA), secure RPC integration, drafts and editors
+- `/admin/assets/snmun-emblem.png` and `snmun-wordmark.png` — identity assets
+- `STAFF-ACTIVATION.sql` — administrator-reviewed steps to assign an APPROVED existing Supabase Auth account to an existing role
 
-## Start here
+## Install
 
-**Option A — Quick preview without installing anything:** Open `index.html` in Chrome/Edge/Firefox. CSS, images and video use relative paths. Local links to pages are automatically converted from clean URLs to folder `index.html` paths, if JavaScript is enabled. Live Supabase content might not load from the local file protocol in some browsers; this does not affect the design.
+1. Upload the *admin folder* to the public website root (so your site serves `https://snmun.online/admin/`). Use HTTPS.
+2. The database-side RPC `public.snmun_portal(text,text,jsonb)` has already been installed on Supabase project `yavigljdyiazssyhgsqz` (SNMUN WEBSITE).
+3. Ensure you control the existing Supabase Auth email identity and that it is verified. Never enter your password into chat.
+4. In Supabase Dashboard > Authentication > Users, confirm which user is the **authorised** Chairperson account. Do **not** automatically grant administrator access based solely on an email resembling a staff name.
+5. Review `STAFF-ACTIVATION.sql`, replace the placeholder with the verified, authorised user UUID and run it once in Supabase SQL Editor. This is a privileged administrative action.
+6. In the portal, sign in using your Supabase Auth password and enrol/verify an authenticator app if requested. You will be denied access until your MFA assurance level is AAL2.
+7. For additional staff, use the existing `deputy_chairperson` and `secretary` role codes only after the required approval and invitation workflows.
+8. In Supabase Auth settings, enable leaked-password protection, and configure appropriate password policies, MFA and sign-in protections.
 
-**Option B — Recommended real-site preview:** With Python installed, from inside the `SNMUN-Homepage/` folder run `python -m http.server 8080` and browse to `http://localhost:8080/`. This tests genuine `/about/` URLs without `.html` in the address bar.
+## Current implementation
 
-**Option C — Upload to GitHub Pages or a static host:** Upload the CONTENTS of `SNMUN-Homepage/` to the web root. `about/index.html` appears at `/about/` (hosting must resolve directory indexes). When deploying to a GitHub Pages project subpath rather than your own domain, configure a proper base path or custom domain; this package assumes the site is hosted at `/`.
+**Connected to live Supabase**: sign-in, TOTP MFA, private staff identity and permissions, dashboard counters, listings, page drafts and block editor, announcements, articles, event drafts, session planning, forms link editor, CMS setting edits, internal CMS page approval/publication (where permission allows), and admin audit listings. These actions communicate via a narrow `public.snmun_portal` function that uses the existing restricted schemas and RLS.
 
-### What's included
+**Restricted / read-only in this version**: detailed staff provisioning, partner/institution creation, media uploads, safeguarding, delegate confidential data, enrolments, approvals for non-page content, analytics, redirects, automatic backups, external email sending, complex forms, bulk imports. These require additional audited workflows, not fake in-browser controls.
 
-- `index.html` — complete homepage
-- `assets/video/snmun-homepage-hero.mp4` — exact supplied 28-second 1920×720 video
-- `assets/video/snmun-homepage-mobile.mp4` — optimised smaller mobile version
-- `assets/images/` — transparent logos extracted from your previous website package plus still frames from your supplied video
-- `assets/css/site.css`, `assets/js/site.js`, `assets/js/config.js` — responsive style, navigation, safe Supabase public feed and social URLs
-- `about/index.html`, `programmes/index.html`, etc. — clearly marked **placeholder pages** for navigation testing
-- `supabase/01_OPTIONAL_PUBLIC_HOMEPAGE_FEED.sql` — read-only publishing-filtered RPC to serve approved news, events and announcements
-- `PAGES-AND-ROUTES.md` — complete included routes
+**Public-site integration still needed**: publishing a CMS page changes its database status but will not update static HTML until a vetted public content feed and the static public frontend are wired together. This package is **the management portal**, not a replacement for the public website.
 
-## Supabase connection
+**No active staff provisioned automatically**: the project had an Auth user but zero `administration.staff_profiles` entries when inspected. Do not confuse a successful Auth password login with authorisation. A verified owner/admin must complete the setup before this portal will grant access.
 
-The `assets/js/config.js` file includes the **public anon key** and API hostname you supplied. Public/anon keys are intentionally usable in browser code; never put a `service_role` key, secret API key, database password or access token in public files.
+**Session caution**: Inaugural Session 2027 is draft/hidden. This portal cannot confirm it or publish it from the basic planning editor.
 
-Your source tables are currently in private schemas and protected by RLS. The browser **cannot and must not** query them directly. To enable live approved-content on the homepage, run `supabase/01_OPTIONAL_PUBLIC_HOMEPAGE_FEED.sql` once in the project's SQL Editor. This adds a **public read-only RPC** returning only fields from published and eligible records. It changes no existing source-table permissions and performs no insert/update/delete. Do **not** expose `cms`, `confidential`, `administration`, `programme`, `editorial`, or `relations` schemas to the anonymous API.
+## Deployment and security
 
-Until that RPC exists, the homepage still works and displays accurate, editorially appropriate empty states. It is **not** an error if the homepage currently shows no news or events: none are approved for public display yet.
+- Public browser code contains only a legacy public `anon` key, not a service-role secret. RLS and the RPC enforce row and action-level authorisation. Consider replacing it with the project's modern publishable key as part of deployment.
+- The `admin/` HTML is public for delivery but the dashboard/data are not. No secrets should live in browser source.
+- CDN loaded for `@supabase/supabase-js@2.86.0` (version-pinned). Test connectivity to jsDelivr in your target environment; for maximum reliability host audited dependencies locally or bundle them at deployment.
+- Set a strict CSP, security headers, site-wide HTTPS and proper cache policies on the web host before production.
+- Authorise and test each staff permission, MFA challenge, CMS draft, publication workflow and RLS policy in a staging environment.
+- Do not use browser code to store PII, credentials, OAuth secrets, service keys, or session backups.
 
-**Important security:** This is a narrow SECURITY DEFINER function, intentionally callable by anonymous visitors to read *published*, whitelisted content. Review the code before installing; do not add private fields to the returned JSON. Public content approval and data-entry workflows are still to be built in the Management Portal.
+## Notes on release 1
 
-## Social accounts
-
-Open `assets/js/config.js` and paste each verified **full HTTPS official profile URL** under `socialAccounts`. Until then, circles appear as non-clickable design placeholders; they never link to incorrect or unverified accounts.
-
-## Other notes
-
-- The public contact email has been corrected to **info@snmun.online**.
-- The Tyler Nicholas Foundation link is https://tyler-nicholas-foundation.online.
-- The hero video has no sound in this presentation; site playback is muted, inline and looped, with image fallback for reduced motion, low-data and blocked autoplay.
-- This preview deliberately sets `noindex,nofollow` on pages. Remove this before public launch after validating all content, privacy/legal copy and route completion.
-- The final site's social URLs, legal documents, individual subpages and user-visible publishing flows will be completed in later stages; they are not misrepresented as finished.
-- We did not make changes to your live Supabase project in preparing this website ZIP.
-
-## Quick mobile QA checklist
-
-Test widths 320, 375, 390, 430, 768, 1024, 1280, 1440. No document-level horizontal overflow or horizontal 'white-screen' swiping is intended. Mobile navigation expands vertically and scrolls internally. Video scales to viewport and uses poster when autoplay is unavailable.
+Some advanced sidebar modules are deliberately read-only, and the public CMS feed remains a separate integration. The portal is usable for initial authenticated website management only after staff activation.
