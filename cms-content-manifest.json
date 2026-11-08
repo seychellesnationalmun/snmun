@@ -1,0 +1,63 @@
+{
+  "status": "draft_static_fallback",
+  "backend": "Supabase",
+  "integration": "A public approved-content read endpoint and its schema must be confirmed before enabling live fetching. Do not query private draft tables with the anon key.",
+  "pages": [
+    {
+      "slug": "index",
+      "path": "/about/",
+      "title": "About SNMUN",
+      "subtitle": "Advancing diplomatic education. Inspiring informed leadership. Connecting Seychelles to the world.",
+      "hero_asset": "about-hero.webp"
+    },
+    {
+      "slug": "mission-vision",
+      "path": "/about/mission-vision/",
+      "title": "Mission & Vision",
+      "subtitle": "Our purpose and the future we seek to help shape.",
+      "hero_asset": "mission-hero.webp"
+    },
+    {
+      "slug": "history",
+      "path": "/about/history/",
+      "title": "Our History",
+      "subtitle": "The origins of a national commitment to youth diplomacy and international understanding.",
+      "hero_asset": "history-hero.webp"
+    },
+    {
+      "slug": "principles-values",
+      "path": "/about/principles-values/",
+      "title": "Principles & Values",
+      "subtitle": "The standards that guide our educational mission and institutional conduct.",
+      "hero_asset": "values-hero.webp"
+    },
+    {
+      "slug": "governance",
+      "path": "/about/governance/",
+      "title": "Governance",
+      "subtitle": "Institutional oversight, responsibility and accountability.",
+      "hero_asset": "governance-hero.webp"
+    },
+    {
+      "slug": "leadership",
+      "path": "/about/leadership/",
+      "title": "Leadership",
+      "subtitle": "The people entrusted with guiding the programme\u2019s establishment and direction.",
+      "hero_asset": "leadership-hero.webp"
+    },
+    {
+      "slug": "tyler-nicholas-foundation",
+      "path": "/about/tyler-nicholas-foundation/",
+      "title": "Tyler Nicholas Foundation",
+      "subtitle": "The institutional home of Seychelles National Model United Nations.",
+      "hero_asset": "foundation-hero.webp"
+    },
+    {
+      "slug": "faq",
+      "path": "/about/faq/",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Answers to common questions about our programme, participation and institutional arrangements.",
+      "hero_asset": "faq-hero.webp"
+    }
+  ]
+}
